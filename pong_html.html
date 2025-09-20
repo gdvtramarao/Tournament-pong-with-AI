@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament Pong</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-wrapper">
+        <div class="game-header">
+            <h1 class="game-title">Tournament Pong</h1>
+            <p class="game-subtitle">First to 10 points or highest score when time runs out wins!</p>
+        </div>
+
+        <div class="game-status">
+            <div class="score-section">
+                <div class="player-name">You</div>
+                <div class="score" id="leftScore">0</div>
+            </div>
+            
+            <div class="timer-section">
+                <div class="timer-label">TIME LEFT</div>
+                <div class="timer" id="timer">1:00</div>
+            </div>
+            
+            <div class="score-section">
+                <div class="player-name">AI Pro</div>
+                <div class="score" id="rightScore">0</div>
+            </div>
+        </div>
+
+        <div class="ai-chat" id="aiChat">
+            <div class="ai-avatar">🤖</div>
+            <div class="ai-message">
+                <div class="ai-name">AI Pro</div>
+                <div class="ai-text" id="aiText">Ready to play? I've been practicing! Move your mouse to control your paddle. Let's see what you've got! 💪</div>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <canvas id="pong" width="800" height="400"></canvas>
+            <div class="game-paused" id="gamePaused">
+                <h3>Game Paused</h3>
+                <p>Click anywhere to continue</p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-info">
+                Move your mouse up and down to control your paddle
+            </div>
+            <div class="game-controls">
+                <button class="btn btn-secondary" id="pauseBtn">Pause</button>
+                <button class="btn btn-primary" id="restartBtn">New Game</button>
+            </div>
+        </div>
+
+        <div class="game-over" id="gameOver">
+            <div class="game-over-content">
+                <div class="winner-badge" id="winnerBadge">You Win!</div>
+                <h2 id="gameOverTitle">Congratulations!</h2>
+                <div class="final-score" id="finalScore">Final Score: 10 - 8</div>
+                <div class="ai-message" style="margin: 20px 0;">
+                    <div class="ai-text" id="finalAiMessage">Great game! You really improved as we played!</div>
+                </div>
+                <button class="btn btn-primary" id="playAgainBtn">Play Again</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="creator">gdvtramarao</div>
+            <div class="tagline">Crafted with passion and innovation.</div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
