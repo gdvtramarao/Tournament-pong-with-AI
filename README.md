@@ -1,4 +1,4 @@
-# 🏓 Tournament Pong
+# 🏓 Tournament Pong with AI
 
 A modern, interactive Pong game with AI commentary and tournament-style gameplay. Built with vanilla HTML5, CSS3, and JavaScript.
 
@@ -45,7 +45,7 @@ Tournament Pong elevates the classic Pong experience with modern features, engag
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/gdvtramarao/tournament-pong.git
+   git clone https://github.com/gdvtramarao/Tournament-pong-with-AI.git
    ```
 
 2. Navigate to the project directory:
