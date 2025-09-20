@@ -50,7 +50,7 @@ Tournament Pong elevates the classic Pong experience with modern features, engag
 
 2. Navigate to the project directory:
    ```bash
-   cd tournament-pong
+   cd Tournament-pong-with-AI
    ```
 
 3. Open `index.html` in your web browser:
