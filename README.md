@@ -1,19 +1,31 @@
-# 🏓 Tournament Pong with AI
+# 🏓 Tournament Pong
 
 A modern, interactive Pong game with AI commentary and tournament-style gameplay. Built with vanilla HTML5, CSS3, and JavaScript.
 
-![Tournament Pong Banner](https://img.shields.io/badge/Game-Tournament%20Pong-blue?style=for-the-badge&logo=javascript)
+[![Live Demo](https://img.shields.io/badge/🎮_Play_Live-Tournament_Pong-success?style=for-the-badge)](https://tournamentpong.vercel.app/)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
+
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+## 🌟 Live Demo
+
+**🎮 [Play Tournament Pong Now!](https://tournamentpong.vercel.app/)**
+
+Experience the thrill of competitive Pong with intelligent AI commentary. No downloads required - play instantly in your browser!
 
 ## 🎮 Game Overview
 
 Tournament Pong elevates the classic Pong experience with modern features, engaging AI commentary, and competitive tournament rules. Challenge yourself against an intelligent AI opponent that adapts and provides real-time feedback throughout the match.
 
-## ✨ Features
+## 🌟 Live Demo
 
-### 🏆 Tournament Mode
+**🎮 [Play Tournament Pong Now!](https://tournamentpong.vercel.app/)**
+
+Experience the thrill of competitive Pong with intelligent AI commentary. No downloads required - play instantly in your browser!
+
+## ✨ Features
 - **First to 10 points wins** or highest score when time runs out
 - **60-second time limit** with live countdown timer
 - **Professional scoreboard** with clean, modern design
@@ -36,21 +48,27 @@ Tournament Pong elevates the classic Pong experience with modern features, engag
 - **Intuitive controls** with visual feedback
 - **Game over screen** with detailed match results
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
-### Prerequisites
+### 🎮 Play Online (Recommended)
+**Just click and play:** [https://tournamentpong.vercel.app/](https://tournamentpong.vercel.app/)
+
+No installation needed! Works on all devices - desktop, tablet, and mobile.
+
+### 💻 Run Locally
+#### Prerequisites
 - Any modern web browser (Chrome, Firefox, Safari, Edge)
 - No additional dependencies or installations required
 
-### Installation
+#### Installation Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/gdvtramarao/Tournament-pong-with-AI.git
+   git clone https://github.com/gdvtramarao/tournament-pong.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd Tournament-pong-with-AI
+   cd tournament-pong
    ```
 
 3. Open `index.html` in your web browser:
@@ -67,7 +85,24 @@ Tournament Pong elevates the classic Pong experience with modern features, engag
 
 **Or simply double-click on `index.html`**
 
-## 🎮 How to Play
+## 🌐 Deployment
+
+This project is deployed and hosted on [Vercel](https://vercel.com/) for optimal performance and reliability:
+
+- **Live URL**: [https://tournamentpong.vercel.app/](https://tournamentpong.vercel.app/)
+- **Automatic deployments** from the main branch
+- **Global CDN** for fast loading worldwide
+- **Zero configuration** deployment
+- **Mobile optimized** for all devices
+
+## 🔗 Links & Resources
+
+- 🎮 **Live Game**: [https://tournamentpong.vercel.app/](https://tournamentpong.vercel.app/)
+- 📱 **Mobile Friendly**: Responsive design works on all devices
+- 🌍 **Global Access**: Fast loading worldwide via Vercel CDN
+- 📖 **Documentation**: Complete setup and gameplay guide below
+
+---
 
 ### Controls
 - **Mouse Movement**: Move your mouse up and down to control your paddle
@@ -93,7 +128,7 @@ The AI opponent provides dynamic commentary including:
 ## 📁 Project Structure
 
 ```
-Tournament-pong-with-AI/
+tournament-pong/
 │
 ├── index.html          # Main HTML structure
 ├── style.css           # CSS styling and responsive design
