@@ -93,7 +93,7 @@ The AI opponent provides dynamic commentary including:
 ## 📁 Project Structure
 
 ```
-tournament-pong/
+Tournament-pong-with-AI/
 │
 ├── index.html          # Main HTML structure
 ├── style.css           # CSS styling and responsive design
