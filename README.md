@@ -63,12 +63,12 @@ No installation needed! Works on all devices - desktop, tablet, and mobile.
 #### Installation Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/gdvtramarao/tournament-pong.git
+   git clone https://github.com/gdvtramarao/Tournament-pong-with-AI.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd tournament-pong
+   cd Tournament-pong-with-AI
    ```
 
 3. Open `index.html` in your web browser:
