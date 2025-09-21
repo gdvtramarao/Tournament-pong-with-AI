@@ -19,12 +19,6 @@ Experience the thrill of competitive Pong with intelligent AI commentary. No dow
 
 Tournament Pong elevates the classic Pong experience with modern features, engaging AI commentary, and competitive tournament rules. Challenge yourself against an intelligent AI opponent that adapts and provides real-time feedback throughout the match.
 
-## 🌟 Live Demo
-
-**🎮 [Play Tournament Pong Now!](https://tournamentpong.vercel.app/)**
-
-Experience the thrill of competitive Pong with intelligent AI commentary. No downloads required - play instantly in your browser!
-
 ## ✨ Features
 - **First to 10 points wins** or highest score when time runs out
 - **60-second time limit** with live countdown timer
