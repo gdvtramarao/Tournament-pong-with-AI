@@ -36,6 +36,34 @@ Tournament Pong elevates the classic Pong experience with modern features, engag
 - **Smooth controls** with mouse tracking
 - **Pause/Resume functionality** (spacebar or button)
 
+### 📊 Vercel Analytics Integration
+Tournament Pong now comes with **built-in analytics** to help understand player engagement:
+
+#### ✅ Basic Tracking
+- Automatic tracking of page views and sessions
+- Works out-of-the-box with no extra dependencies
+
+#### 🎮 Custom Game Events
+- **Game Started** → when a new match begins  
+- **Player Scored** → includes score context  
+- **AI Scored** → includes score context  
+- **Game Completed** → tracks winner, final scores, and game duration  
+
+#### 📈 Insights You Get
+- Total games played
+- Player vs AI win/loss ratio
+- Average game duration
+- Engagement metrics (who’s really hooked 😉)
+- Device, browser, and location stats
+
+#### 🚀 How to View
+1. Go to your **Vercel Dashboard**  
+2. Select the project → *Tournament Pong*  
+3. Navigate to **Analytics Tab**  
+4. Enjoy real-time game metrics!
+
+---
+
 ### 🎨 Modern UI/UX
 - **Clean, professional design** with gradient backgrounds
 - **Responsive layout** that works on all devices
