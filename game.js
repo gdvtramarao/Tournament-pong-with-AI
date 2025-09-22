@@ -41,7 +41,9 @@ let rightPaddle = {
     x: WIDTH - PADDLE_WIDTH - 20,
     y: HEIGHT / 2 - PADDLE_HEIGHT / 2,
     width: PADDLE_WIDTH,
-    height: PADDLE_HEIGHT
+    height: PADDLE_HEIGHT,
+    targetOffset: 0, // For smooth AI targeting
+    lastTargetUpdate: 0 // To prevent constant target changes
 };
 
 let ball = {
@@ -275,51 +277,64 @@ function updateGame() {
         checkGameEnd();
     }
 
-    // AI paddle movement with realistic imperfections
-    const aiTarget = ball.y - rightPaddle.height / 2;
+    // AI paddle movement with smooth, realistic behavior
+    const currentTime = Date.now();
+    
+    // Only update AI targeting periodically to prevent shaking
+    if (currentTime - rightPaddle.lastTargetUpdate > 100) { // Update every 100ms
+        const mistakeChance = Math.random();
+        
+        // Calculate base target
+        let baseTarget = ball.y - rightPaddle.height / 2;
+        
+        // Add imperfection offset that stays consistent for a short time
+        if (mistakeChance < 0.15) { // 15% chance of imperfect targeting
+            rightPaddle.targetOffset = (Math.random() - 0.5) * 30; // ±15 pixel offset
+        } else if (mistakeChance < 0.05) { // 5% chance of bigger mistake
+            rightPaddle.targetOffset = (Math.random() - 0.5) * 60; // ±30 pixel offset
+        } else {
+            rightPaddle.targetOffset *= 0.8; // Gradually correct the offset
+        }
+        
+        rightPaddle.lastTargetUpdate = currentTime;
+    }
+    
+    // Calculate final target with consistent offset
+    const aiTarget = ball.y - rightPaddle.height / 2 + rightPaddle.targetOffset;
     const aiDiff = aiTarget - rightPaddle.y;
     
-    // Make AI less perfect based on various factors
+    // Calculate AI speed with realistic limitations
     let aiSpeed = PADDLE_SPEED;
     let aiAccuracy = 1.0;
     
     // Reduce accuracy when ball is moving fast
     const ballSpeed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
     if (ballSpeed > 8) {
-        aiAccuracy *= 0.7; // 30% less accurate on fast balls
+        aiAccuracy *= 0.75; // 25% less accurate on fast balls
     }
     
     // Reduce accuracy during long rallies (AI gets "tired")
     if (rallyCount > 150) {
-        aiAccuracy *= 0.8;
+        aiAccuracy *= 0.85; // 15% reduction when tired
+        aiSpeed *= 0.9; // Also move slightly slower when tired
     }
     
-    // Add random reaction delays and mistakes
-    const reactionDelay = Math.random() * 0.3; // 0-30% chance of delayed reaction
-    if (reactionDelay > 0.25) {
-        aiSpeed *= 0.5; // Slow reaction
+    // Occasional reaction delay
+    const reactionChance = Math.random();
+    if (reactionChance < 0.1) { // 10% chance of slower reaction
+        aiSpeed *= 0.6;
     }
     
-    // Random "mistake" chance - AI misses sometimes
-    const mistakeChance = Math.random();
-    if (mistakeChance < 0.05) { // 5% chance of mistake
-        aiSpeed *= 0.2; // Very slow response
-    }
+    // Apply smooth movement with dead zone to prevent micro-jitters
+    const finalSpeed = Math.min(aiSpeed * aiAccuracy, Math.abs(aiDiff) * 0.8);
     
-    // Add some randomness to AI targeting (not pixel perfect)
-    const targetOffset = (Math.random() - 0.5) * 20; // ±10 pixel randomness
-    const adjustedTarget = aiTarget + (targetOffset * aiAccuracy);
-    const finalDiff = adjustedTarget - rightPaddle.y;
-    
-    // Apply movement with calculated speed
-    const finalSpeed = Math.min(aiSpeed * aiAccuracy, Math.abs(finalDiff));
-    
-    if (finalDiff > 2) { // Dead zone to prevent jittering
+    if (aiDiff > 3) { // Dead zone to prevent jittering
         rightPaddle.y += finalSpeed;
-    } else if (finalDiff < -2) {
+    } else if (aiDiff < -3) {
         rightPaddle.y -= finalSpeed;
     }
     
+    // Clamp paddle position
     rightPaddle.y = Math.max(0, Math.min(HEIGHT - PADDLE_HEIGHT, rightPaddle.y));
 
     // Dynamic AI messages
