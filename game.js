@@ -14,7 +14,7 @@ const PADDLE_WIDTH = 12;
 const PADDLE_HEIGHT = 80;
 const PADDLE_SPEED = 6;
 const BALL_SIZE = 12;
-const BALL_SPEED = 7;
+const BALL_SPEED = 6.5; // Slightly slower for better gameplay
 const GAME_TIME = 60; // 1 minute
 const WIN_SCORE = 10;
 
@@ -275,15 +275,49 @@ function updateGame() {
         checkGameEnd();
     }
 
-    // AI paddle movement
+    // AI paddle movement with realistic imperfections
     const aiTarget = ball.y - rightPaddle.height / 2;
     const aiDiff = aiTarget - rightPaddle.y;
-    const aiSpeed = Math.min(PADDLE_SPEED, Math.abs(aiDiff));
     
-    if (aiDiff > 0) {
-        rightPaddle.y += aiSpeed;
-    } else if (aiDiff < 0) {
-        rightPaddle.y -= aiSpeed;
+    // Make AI less perfect based on various factors
+    let aiSpeed = PADDLE_SPEED;
+    let aiAccuracy = 1.0;
+    
+    // Reduce accuracy when ball is moving fast
+    const ballSpeed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+    if (ballSpeed > 8) {
+        aiAccuracy *= 0.7; // 30% less accurate on fast balls
+    }
+    
+    // Reduce accuracy during long rallies (AI gets "tired")
+    if (rallyCount > 150) {
+        aiAccuracy *= 0.8;
+    }
+    
+    // Add random reaction delays and mistakes
+    const reactionDelay = Math.random() * 0.3; // 0-30% chance of delayed reaction
+    if (reactionDelay > 0.25) {
+        aiSpeed *= 0.5; // Slow reaction
+    }
+    
+    // Random "mistake" chance - AI misses sometimes
+    const mistakeChance = Math.random();
+    if (mistakeChance < 0.05) { // 5% chance of mistake
+        aiSpeed *= 0.2; // Very slow response
+    }
+    
+    // Add some randomness to AI targeting (not pixel perfect)
+    const targetOffset = (Math.random() - 0.5) * 20; // ±10 pixel randomness
+    const adjustedTarget = aiTarget + (targetOffset * aiAccuracy);
+    const finalDiff = adjustedTarget - rightPaddle.y;
+    
+    // Apply movement with calculated speed
+    const finalSpeed = Math.min(aiSpeed * aiAccuracy, Math.abs(finalDiff));
+    
+    if (finalDiff > 2) { // Dead zone to prevent jittering
+        rightPaddle.y += finalSpeed;
+    } else if (finalDiff < -2) {
+        rightPaddle.y -= finalSpeed;
     }
     
     rightPaddle.y = Math.max(0, Math.min(HEIGHT - PADDLE_HEIGHT, rightPaddle.y));
