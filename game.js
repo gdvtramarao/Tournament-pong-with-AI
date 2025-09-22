@@ -171,6 +171,11 @@ function restartGame() {
     
     resetBall();
     updateAiMessage(getRandomMessage('start'));
+    
+    // Analytics: Track game start
+    if (typeof window.va !== 'undefined') {
+        window.va('track', 'Game Started');
+    }
 }
 
 function updateAiMessage(message) {
@@ -269,12 +274,22 @@ function updateGame() {
         updateAiMessage(getRandomMessage('aiScore'));
         resetBall();
         checkGameEnd();
+        
+        // Analytics: Track AI score
+        if (typeof window.va !== 'undefined') {
+            window.va('track', 'AI Scored', { aiScore: rightScore, playerScore: leftScore });
+        }
     } else if (ball.x > WIDTH) {
         leftScore++;
         leftScoreElement.textContent = leftScore;
         updateAiMessage(getRandomMessage('playerScore'));
         resetBall();
         checkGameEnd();
+        
+        // Analytics: Track player score
+        if (typeof window.va !== 'undefined') {
+            window.va('track', 'Player Scored', { playerScore: leftScore, aiScore: rightScore });
+        }
     }
 
     // AI paddle movement with smooth, realistic behavior
@@ -390,6 +405,16 @@ function showGameOver() {
     
     document.getElementById('finalAiMessage').textContent = message;
     gameOverElement.style.display = 'flex';
+    
+    // Analytics: Track game completion
+    if (typeof window.va !== 'undefined') {
+        window.va('track', 'Game Completed', {
+            winner: winner,
+            playerScore: leftScore,
+            aiScore: rightScore,
+            gameDuration: Math.round((Date.now() - gameStartTime) / 1000)
+        });
+    }
 }
 
 function draw() {
