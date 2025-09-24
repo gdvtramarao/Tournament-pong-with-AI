@@ -9,7 +9,6 @@ A modern, interactive Pong game with AI commentary and tournament-style gameplay
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-## 🎯 [**PLAY NOW →**](https://tournamentpong.vercel.app/)
 
 ## 🌟 Live Demo
 
